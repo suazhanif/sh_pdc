@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_sh_pdc_cancel" model="res.groups">
+        <field name="name">PDC Cancel Feature</field>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <!-- Multi-Company Rule for Post Dated Cheques -->
+    <record id="sh_pdc_wizard_multi_company_rule" model="ir.rule">
+        <field name="name">PDC Cheque Multi-Company Rule</field>
+        <field name="model_id" ref="model_pdc_wizard"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>
+

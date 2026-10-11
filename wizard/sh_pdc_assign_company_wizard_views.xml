@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="sh_pdc_assign_company_wizard_form" model="ir.ui.view">
+        <field name="name">sh.pdc.assign.company.wizard.form</field>
+        <field name="model">sh.pdc.assign.company.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Assign Company to Post Dated Cheques">
+                <group>
+                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True, 'no_open': True}"/>
+                </group>
+                <footer>
+                    <button name="action_assign_company" string="Assign Company" type="object" class="btn-primary" data-hotkey="q"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="x"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action definition to open wizard -->
+    <record id="sh_pdc_assign_company_wizard_action" model="ir.actions.act_window">
+        <field name="name">Assign Company</field>
+        <field name="res_model">sh.pdc.assign.company.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="sh_pdc.model_pdc_wizard"/>
+        <field name="binding_view_types">list</field>
+    </record>
+</odoo>
